@@ -1,0 +1,45 @@
+<html>
+
+<!--  https://github.com/orbitbot/web-mqtt-client -->
+
+<head>
+   <link rel="stylesheet" type="text/css" href="flex.css"/>
+   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+
+   <script src="tostvstost.js"></script>
+<style>
+.dpad-button-spacer {
+   width: 100px;
+   height: 100px;
+}
+
+.dpad-button {
+   width: 100px;
+   height: 100px;
+   border: 1px solid black;
+   border-radius: 25px;
+}
+</style>
+</head>
+
+<body>
+   <div class="flex-vertical">
+	   <div class="flex-horizontal">
+	      <div class="flex-horizontal dpad-button-spacer"></div>
+	      <div id="up-button" class="flex-horizontal dpad-button" onmousedown="keydown(this)" onmouseup="keyup(this)"><i class="material-icons button-icon">keyboard_arrow_up</i></div>
+	      <div class="flex-horizontal dpad-button-spacer"></div>
+	   </div>
+	   <div class="flex-horizontal">
+	      <div class="flex-horizontal dpad-button"><i class="material-icons button-icon">keyboard_arrow_left</i></div>
+		   <div class="flex-horizontal dpad-button-spacer"></div>
+		   <div class="flex-horizontal dpad-button"><i class="material-icons button-icon">keyboard_arrow_right</i></div>
+	   </div>
+	   <div class="flex-horizontal">
+	      <div class="flex-horizontal dpad-button-spacer"></div>
+	      <div class="flex-horizontal dpad-button"><i class="material-icons button-icon">keyboard_arrow_down</i></div>
+	      <div class="flex-horizontal dpad-button-spacer"></div>
+	   </div>
+   </div>
+</body>
+
+</html>
