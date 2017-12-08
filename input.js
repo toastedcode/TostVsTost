@@ -8,13 +8,13 @@ function Input(initRobox)
       {
          case "up-button":
          {
-            robox.drive(100, 0);
+            robox.drive(-100, 0);
             break;
          }
          
          case "down-button":
          {
-            robox.drive(-100, 0);
+            robox.drive(100, 0);
             break;
          }
          
@@ -28,6 +28,18 @@ function Input(initRobox)
          {
             robox.rotate(-100, 0);
             break;
+         }
+         
+         case "slash-button":
+         {
+        	 robox.servo("servo2", 90);
+        	 break;
+         }
+         
+         case "slap-button":
+         {
+        	 robox.servo("servo1", 90);
+        	 break;
          }
          
          default:
@@ -63,6 +75,18 @@ function Input(initRobox)
          {
             robox.rotate(0);
             break;
+         }
+         
+         case "slash-button":
+         {
+        	 robox.servo("servo1", 0);
+        	 break;
+         }
+         
+         case "slap-button":
+         {
+        	 robox.servo("servo2", 0);
+        	 break;
          }
          
          default:

@@ -1,3 +1,8 @@
+<?php
+
+?>
+
+
 <html>
 
 <!--  https://github.com/orbitbot/web-mqtt-client -->
@@ -6,9 +11,8 @@
    <link rel="stylesheet" type="text/css" href="flex.css"/>
    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
 
-   <script src="tostvstost.js"></script>
-   <script src="../Third Party/web-mqtt-client/mqtt-client.js"></script>
-   <script src="../Third Party/web-mqtt-client/paho/mqttws31.js"></script>
+   <script src="mqtt-client.js"></script>
+   <script src="mqttws31.js"></script>
    <script src="input.js"></script>
    <script src="robox.js"></script>
    
@@ -20,6 +24,13 @@
    </script>
    
 	<style>
+	
+	   .controller-div {
+	      border-style: solid;
+	      border-weight: 1px;
+	      padding: 20px;
+	   }
+		
 		.dpad-button-spacer {
 		   width: 100px;
 		   height: 100px;
@@ -28,28 +39,92 @@
 		.dpad-button {
 		   width: 100px;
 		   height: 100px;
-		   border: 1px solid black;
-		   border-radius: 25px;
+		   
+		   border-width: 0;
+         outline: none;
+         border-radius: 25px;
+         box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
+         background-color: #3B5998;
+         color: #ecf0f1;
+         font-family:"lucida grande",tahoma,verdana,arial,sans-serif;
 		}
+		
+		.dpad-button:active {
+         background-color: #3e8e41;
+         box-shadow: 0 5px #666;
+         transform: translateY(4px);
+      }
+		
+		.button-icon {
+		   font-size: 4vw;
+		}
+		
+		.dpad-div {
+		   flex-grow: 1;
+		}
+		
+		.button-div {
+		   flex-grow: 1;
+		}
+		
+		.attack-button {
+		   width: 50%;
+		   
+		   font-family:"lucida grande",tahoma,verdana,arial,sans-serif;
+		   color: #ecf0f1;
+
+		   border-radius: 50%;
+	      border-width: 0;
+		   outline: none;
+		   box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
+		   background-color: #3B5998;
+		   
+		   font-size: 3vw;
+		}
+		
+		.attack-button:active {
+         background-color: #3e8e41;
+         box-shadow: 0 5px #666;
+         transform: translateY(4px);
+      }
+		
+		.attack-button:after {
+		  content: "";
+		  display: block;
+		  padding-bottom: 100%;
+	   }
+}
 	</style>
 </head>
 
 <body>
-   <div class="flex-vertical">
-	   <div class="flex-horizontal">
-	      <div class="flex-horizontal dpad-button-spacer"></div>
-	      <div id="up-button" class="flex-horizontal dpad-button" onmousedown="input.onPress(this)" onmouseup="input.onRelease(this)"><i class="material-icons button-icon">keyboard_arrow_up</i></div>
-	      <div class="flex-horizontal dpad-button-spacer"></div>
+   <!--  Controller -->
+   <div class="flex-horizontal controller-div">
+	   <!--  D-Pad -->
+	   <div class="flex-vertical dpad-div">
+		   <div class="flex-horizontal">
+		      <div class="flex-horizontal dpad-button-spacer"></div>
+		      <button id="up-button" class="flex-horizontal dpad-button" onmousedown="input.onPress(this)" onmouseup="input.onRelease(this)"><i class="material-icons button-icon button-icon">keyboard_arrow_up</i></button>
+		      <div class="flex-horizontal dpad-button-spacer"></div>
+		   </div>
+		   <div class="flex-horizontal">
+		      <button id="left-button" class="flex-horizontal dpad-button" onmousedown="input.onPress(this)" onmouseup="input.onRelease(this)"><i class="material-icons button-icon button-icon">keyboard_arrow_left</i></button>
+			   <div class="flex-horizontal dpad-button-spacer"></div>
+			   <button id="right-button" class="flex-horizontal dpad-button" onmousedown="input.onPress(this)" onmouseup="input.onRelease(this)"><i class="material-icons button-icon button-icon">keyboard_arrow_right</i></button>
+		   </div>
+		   <div class="flex-horizontal">
+		      <div class="flex-horizontal dpad-button-spacer"></div>
+		      <button id="down-button" class="flex-horizontal dpad-button" onmousedown="input.onPress(this)" onmouseup="input.onRelease(this)"><i class="material-icons button-iconv button-icon">keyboard_arrow_down</i></button>
+		      <div class="flex-horizontal dpad-button-spacer"></div>
+		   </div>
 	   </div>
-	   <div class="flex-horizontal">
-	      <div id="left-button" class="flex-horizontal dpad-button" onmousedown="input.onPress(this)" onmouseup="input.onRelease(this)"><i class="material-icons button-icon">keyboard_arrow_left</i></div>
-		   <div class="flex-horizontal dpad-button-spacer"></div>
-		   <div id="right-button" class="flex-horizontal dpad-button" onmousedown="input.onPress(this)" onmouseup="input.onRelease(this)"><i class="material-icons button-icon">keyboard_arrow_right</i></div>
+	   <!-- Button 1 -->
+	   <div class="flex-horizontal button-div">
+	      <button id="slap-button" class="flex-horizontal attack-button" onmousedown="input.onPress(this)" onmouseup="input.onRelease(this)">Slap</button>
 	   </div>
-	   <div class="flex-horizontal">
-	      <div class="flex-horizontal dpad-button-spacer"></div>
-	      <div id="down-button" class="flex-horizontal dpad-button" onmousedown="input.onPress(this)" onmouseup="input.onRelease(this)"><i class="material-icons button-icon">keyboard_arrow_down</i></div>
-	      <div class="flex-horizontal dpad-button-spacer"></div>
+	      <!-- Button 2 -->
+	   <div class="flex-horizontal button-div">
+	      <button id="slash-button" class="flex-horizontal attack-button" onmousedown="input.onPress(this)" onmouseup="input.onRelease(this)">Slash</button>
 	   </div>
    </div>
 </body>
