@@ -37,7 +37,7 @@ function Robox(initHost, initPort, initTopic)
       if (client.connected)
       {
          var message = 
-            "{\"messageId\":\"rotate\", \"destination\":\"motorPair\", \"speed\":" + speed + ", \"yaw\":" + yaw + "}";
+            "{\"messageId\":\"drive\", \"destination\":\"motorPair\", \"speed\":" + speed + ", \"yaw\":" + yaw + "}";
             
          this.sendMessage(message);
       }
@@ -53,6 +53,17 @@ function Robox(initHost, initPort, initTopic)
          this.sendMessage(message);
       }
    }
+   
+   Robox.prototype.servo = function(servoId, angle)
+   {
+      if (this.isConnected())
+      {
+         var message = 
+            "{\"messageId\":\"servo\", \"destination\":\"" + servoId + "\", \"angle\":" + angle + "}";
+            
+         this.sendMessage(message);
+      }
+   }.bind(this);
 }
 
 /*

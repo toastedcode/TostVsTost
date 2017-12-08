@@ -20,13 +20,13 @@ function Input(initRobox)
          
          case "left-button":
          {
-            robox.rotate(-100, 0);
+            robox.rotate(100, 0);
             break;
          }
          
          case "right-button":
          {
-            robox.rotate(100, 0);
+            robox.rotate(-100, 0);
             break;
          }
          
@@ -55,13 +55,13 @@ function Input(initRobox)
          
          case "left-button":
          {
-            robox.rotate(0, 0);
+            robox.rotate(0);
             break;
          }
          
          case "right-button":
          {
-            robox.rotate(0, 0);
+            robox.rotate(0);
             break;
          }
          
